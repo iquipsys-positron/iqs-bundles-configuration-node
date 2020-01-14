@@ -1,0 +1,186 @@
+---
+# Container descriptor
+- descriptor: "pip-services:context-info:default:default:1.0"
+  name: "iqs-bundles-configuration-node"
+  description: "Microservice for deploying iqs configuration microservices"
+
+# Console logger
+- descriptor: "pip-services:logger:console:default:1.0"
+  level: "trace"
+
+# Performance counters that posts values to log
+- descriptor: "pip-services:counters:log:default:1.0"
+  level: "trace"
+
+# AWS logging component
+- descriptor: "pip-services:logger:cloudwatch:default:1.0"
+  level: "info"
+  group: "{{ENV_NAME}}"
+  connection:
+    region: "{{{AWS_REGION}}}"
+  credential:
+    access_id: "{{{AWS_ACCESS_ID}}}"
+    access_key: "{{{AWS_ACCESS_KEY}}}"
+
+# AWS metrics component
+- descriptor: "pip-services:counters:cloudwatch:default:1.0"
+  level: "info"
+  connection:
+    region: "{{{AWS_REGION}}}"
+  credential:
+    access_id: "{{{AWS_ACCESS_ID}}}"
+    access_key: "{{{AWS_ACCESS_KEY}}}"
+
+# Common HTTP endpoint
+- descriptor: "pip-services:endpoint:http:default:1.0"
+  connection:
+    protocol: "http"
+    host: "0.0.0.0"
+    port: 8080
+
+# Heartbeat service
+- descriptor: "pip-services:heartbeat-service:http:default:1.0"
+
+# Status service
+- descriptor: "pip-services:status-service:http:default:1.0"
+
+# Discovery service
+- descriptor: "pip-services:discovery:memory:default:*"
+  mongodb: "uri={{{MONGO_SERVICE_URI}}};host={{{MONGO_SERVICE_HOST}}};port={{{MONGO_SERVICE_PORT}}};database={{{MONGO_DB}}}"
+
+# Credential store
+- descriptor: "pip-services:credential-store:memory:default:*"
+  mongodb: "username={{{MONGO_USER}}};password={{{MONGO_PASS}}}"
+
+############## iQs components ##############
+
+# Organizations components
+- descriptor: "pip-services-organizations:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "pip-services-organizations:controller:default:default:*"
+- descriptor: "pip-services-organizations:client:direct:default:*"
+- descriptor: "pip-services-organizations:service:http:default:*"
+
+# Locations components
+- descriptor: "iqs-services-locations:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-locations:controller:default:default:*"
+- descriptor: "iqs-services-locations:client:direct:default:*"
+- descriptor: "iqs-services-locations:service:http:default:*"
+
+# Object groups components
+- descriptor: "iqs-services-objectgroups:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-objectgroups:controller:default:default:*"
+- descriptor: "iqs-services-objectgroups:client:direct:default:*"
+- descriptor: "iqs-services-objectgroups:service:http:default:*"
+
+# Control objects components
+- descriptor: "iqs-services-controlobjects:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-controlobjects:controller:default:default:*"
+- descriptor: "iqs-services-controlobjects:client:direct:default:*"
+- descriptor: "iqs-services-controlobjects:service:http:default:*"
+
+# Data profiles components
+- descriptor: "iqs-services-dataprofiles:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-dataprofiles:controller:default:default:*"
+- descriptor: "iqs-services-dataprofiles:client:direct:default:*"
+- descriptor: "iqs-services-dataprofiles:service:http:default:*"
+
+# Device profiles components
+- descriptor: "iqs-services-deviceprofiles:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-deviceprofiles:controller:default:default:*"
+- descriptor: "iqs-services-deviceprofiles:client:direct:default:*"
+- descriptor: "iqs-services-deviceprofiles:service:http:default:*"
+
+# Device configs components
+- descriptor: "iqs-services-deviceconfigs:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-deviceconfigs:controller:default:default:*"
+- descriptor: "iqs-services-deviceconfigs:client:direct:default:*"
+- descriptor: "iqs-services-deviceconfigs:service:http:default:*"
+
+# Devices components
+- descriptor: "iqs-services-devices:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-devices:controller:default:default:*"
+  message_templates:
+    phone_connect_welcome:
+      template: phone_connect_welcome
+- descriptor: "iqs-services-devices:client:direct:default:*"
+- descriptor: "iqs-services-devices:service:http:default:*"
+
+# Event templates components
+- descriptor: "iqs-services-eventtemplates:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-eventtemplates:controller:default:default:*"
+- descriptor: "iqs-services-eventtemplates:client:direct:default:*"
+- descriptor: "iqs-services-eventtemplates:service:http:default:*"
+
+# Resolutions components
+- descriptor: "iqs-services-resolutions:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-resolutions:controller:default:default:*"
+- descriptor: "iqs-services-resolutions:client:direct:default:*"
+- descriptor: "iqs-services-resolutions:service:http:default:*"
+
+# Gateways components
+- descriptor: "iqs-services-gateways:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-gateways:controller:default:default:*"
+- descriptor: "iqs-services-gateways:client:direct:default:*"
+- descriptor: "iqs-services-gateways:service:http:default:*"
+
+# Zones components
+- descriptor: "iqs-services-zones:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-zones:controller:default:default:*"
+- descriptor: "iqs-services-zones:client:direct:default:*"
+- descriptor: "iqs-services-zones:service:http:default:*"
+
+# Beacons components
+- descriptor: "pip-services-beacons:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "pip-services-beacons:controller:default:default:*"
+- descriptor: "pip-services-beacons:client:direct:default:*"
+- descriptor: "pip-services-beacons:service:http:default:*"
+
+# Event rules components
+- descriptor: "iqs-services-eventrules:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-eventrules:controller:default:default:*"
+- descriptor: "iqs-services-eventrules:client:direct:default:*"
+- descriptor: "iqs-services-eventrules:service:http:default:*"
+
+# Shifts components
+- descriptor: "iqs-services-shifts:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-shifts:controller:default:default:*"
+- descriptor: "iqs-services-shifts:client:direct:default:*"
+- descriptor: "iqs-services-shifts:service:http:default:*"
+
+# Emergency plans components
+- descriptor: "iqs-services-emergencyplans:persistence:mongodb:default:*"
+  connection:
+    discovery_key: mongodb
+- descriptor: "iqs-services-emergencyplans:controller:default:default:*"
+- descriptor: "iqs-services-emergencyplans:client:direct:default:*"
+- descriptor: "iqs-services-emergencyplans:service:http:default:*"

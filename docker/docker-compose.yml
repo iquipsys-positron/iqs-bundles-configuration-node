@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+
+  iqs-bundles-configuration-node:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    # image: registry.gitlab.com/iqs-bundles/iqs-bundles-configuration-node:1.1.0-release
+    links:
+      - mongo
+    environment:
+      - ENV_NAME=debug
+      - AWS_REGION=us-east-1
+      - AWS_ACCESS_ID=
+      - AWS_ACCESS_KEY=
+      - MONGO_SERVICE_URI=mongo:27017/app
+    ports:
+      - "8080:8080"
+
+  mongo:
+    image: mongo:latest

@@ -1,0 +1,82 @@
+{
+  "name": "iqs-bundles-configuration-node",
+  "version": "1.0.0",
+  "author": "Conceptual Vision Consulting LLC",
+  "description": "Microservice for deploying components iqs-services microservices",
+  "contributors": [
+    "Sergey Seroukhov <seroukhov@gmail.com>"
+  ],
+  "main": "./obj/src/index.js",
+  "typings": "./obj/src/index.d.ts",
+  "keywords": [
+    "iqs.services",
+    "microservice"
+  ],
+  "noAnalyze": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:iquipsys-positron/iqs-bundles-configuration-node.git"
+  },
+  "license": "SEE LICENSE IN LICENCE.md",
+  "engines": {
+    "node": ">=0.6.14"
+  },
+  "private": false,
+  "scripts": {
+    "start": "node app",
+    "test": "mocha -t 10000 -R spec -u tdd --recursive ./obj/test",
+    "benchmark": "matcha -R clean -I tdd ./benchmark/run.js"
+  },
+  "dependencies": {
+    "pip-services3-commons-node": "^3.0.0",
+    "pip-services3-components-node": "^3.0.0",
+    "pip-services3-container-node": "^3.0.0",
+    "pip-services3-data-node": "^3.0.0",
+    "pip-services3-aws-node": "^3.0.0",
+    "pip-services3-rpc-node": "^3.0.0",
+    "pip-services3-mongodb-node": "^3.0.0",
+    "pip-services3-facade-node": "^3.0.0",
+    "pip-clients-organizations-node": "^1.0.0",
+    "iqs-clients-locations-node": "^1.0.0",
+    "iqs-clients-objectgroups-node": "^1.0.0",
+    "iqs-clients-controlobjects-node": "^1.0.0",
+    "iqs-clients-dataprofiles-node": "^1.0.0",
+    "iqs-clients-deviceprofiles-node": "^1.0.0",
+    "iqs-clients-deviceconfigs-node": "^1.0.0",
+    "iqs-clients-devices-node": "^1.0.0",
+    "iqs-clients-eventtemplates-node": "^1.0.0",
+    "iqs-clients-resolutions-node": "^1.0.0",
+    "iqs-clients-gateways-node": "^1.0.0",
+    "iqs-clients-zones-node": "^1.0.0",
+    "pip-clients-beacons-node": "^1.0.0",
+    "iqs-clients-eventrules-node": "^1.0.0",
+    "iqs-clients-shifts-node": "^1.0.0",
+    "iqs-clients-emergencyplans-node": "^1.0.0",
+    "pip-services-organizations-node": "^1.0.0",
+    "iqs-services-locations-node": "^1.0.0",
+    "iqs-services-objectgroups-node": "^1.0.0",
+    "iqs-services-controlobjects-node": "^1.0.0",
+    "iqs-services-devices-node": "^1.0.0",
+    "iqs-services-eventtemplates-node": "^1.0.0",
+    "iqs-services-resolutions-node": "^1.0.0",
+    "iqs-services-gateways-node": "^1.0.0",
+    "iqs-services-zones-node": "^1.0.0",
+    "pip-services-beacons-node": "^1.0.0",
+    "iqs-services-eventrules-node": "^1.0.0",
+    "iqs-services-shifts-node": "^1.0.0",
+    "iqs-services-emergencyplans-node": "^1.0.0",
+    "iqs-services-dataprofiles-node": "^1.0.0",
+    "iqs-services-deviceprofiles-node": "^1.0.0",
+    "iqs-services-deviceconfigs-node": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "*",
+    "@types/lodash": "^4.0.0",
+    "@types/async": "^2.0.0",
+    "@types/mocha": "*",
+    "@types/chai": "*",
+    "mocha": "*",
+    "chai": "*",
+    "restify": "4.3.4"
+  }
+}
